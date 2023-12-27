@@ -1,11 +1,22 @@
-const express = require('express');
+import express from "express"
+import cors from "cors"
+import morgan from "morgan"
+import  path  from "path"
 const { Resend } = require('resend');
 
 const app = express();
 const resend = new Resend('re_XohbZVTH_BSg8bWzSDsAkQdQTCL1zrQEX');
 
 app.use(express.json()); 
+app.use(cors());
+app.use(express.json());
+app.use(morgan("dev"))
+app.use(express.static(path.join(__dirname,"/public")))
+const port = process.env.PORT || 3000;
 
+app.listen(port, () => {
+    console.log(`Escuchando en http://localhost:${port}`);
+});
 app.post("/enviar", async (req, res) => {
     try {
         const { nombre, mensaje } = req.body;
@@ -29,7 +40,4 @@ app.post("/enviar", async (req, res) => {
         console.error(error);
         res.status(500).json({ error: "Error interno del servidor." });
     }
-});
-app.listen(3000, () => {
-    console.log("Escuchando en http://localhost:3000");
 });
