@@ -11,8 +11,8 @@ dotenv.config();
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
-const publicPath = path.join(__dirname, "public");
-app.use(express.static(publicPath));
+app.use(express.static(path.join(__dirname,"/public")))
+
 
 const port = process.env.PORT || 3000;
 
