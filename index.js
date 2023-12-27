@@ -1,4 +1,3 @@
-// app.js o index.js
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
@@ -7,6 +6,7 @@ import dotenv from 'dotenv';
 import emailRouter from "./src/routes/email.routes";
 
 dotenv.config();
+const app = express();
 
 app.use(express.json());
 app.use(cors());
