@@ -3,9 +3,9 @@ const resend = new Resend('re_XohbZVTH_BSg8bWzSDsAkQdQTCL1zrQEX');
 
 export const email = async (req, res) => {
     try {
-        const { nombre, mensaje,contacto } = req.body;
+        const { nombre, mensaje,correo } = req.body;
 
-        if (!nombre || !mensaje || !contacto) {
+        if (!nombre || !mensaje || !correo) {
             return res.status(400).json({ error: "Nombre, correo y mensaje son campos obligatorios." });
         }
         const { data, error } = await resend.emails.send({
