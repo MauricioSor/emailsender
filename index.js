@@ -4,7 +4,6 @@ import morgan from "morgan";
 import path from "path";
 import dotenv from 'dotenv';
 import emailRouter from "./src/routes/email.routes";
-
 dotenv.config();
 const app = express();
 

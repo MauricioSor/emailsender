@@ -4,14 +4,13 @@ const resend = new Resend('re_XohbZVTH_BSg8bWzSDsAkQdQTCL1zrQEX');
 export const email = async (req, res) => {
     try {
         const { nombre, mensaje,correo } = req.body;
-
         if (!nombre || !mensaje || !correo) {
             return res.status(400).json({ error: "Nombre, correo y mensaje son campos obligatorios." });
         }
         const { data, error } = await resend.emails.send({
             from: `Maubot <onboarding@resend.dev>`,
             to: "mauricioutn2017@gmail.com",
-            subject: `Hola tienes un correo de ${nombre}! \n Su contacto es ${correo}`,
+            subject: `Hola tienes un correo de ${nombre}!. Su contacto es ${correo}`,
             text: mensaje,
         });
         if (error) {
