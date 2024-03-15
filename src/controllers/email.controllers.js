@@ -11,7 +11,7 @@ export const email = async (req, res) => {
         const { data, error } = await resend.emails.send({
             from: `Maubot <onboarding@resend.dev>`,
             to: "mauricioutn2017@gmail.com",
-            subject: `Hola tienes un correo de ${nombre}! <br> Su contacto es ${correo}`,
+            subject: `Hola tienes un correo de ${nombre}! \n Su contacto es ${correo}`,
             text: mensaje,
         });
         if (error) {
